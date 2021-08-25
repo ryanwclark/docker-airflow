@@ -264,7 +264,7 @@ ENV BUILD_ID=${BUILD_ID}
 ARG COMMIT_SHA
 ENV COMMIT_SHA=${COMMIT_SHA}
 
-ARG AIRFLOW_IMAGE_REPOSITORY="https://github.com/apache/airflow"
+ARG AIRFLOW_IMAGE_REPOSITORY="https://github.com/ryanwclark/docker-airflow"
 ARG AIRFLOW_IMAGE_DATE_CREATED
 
 LABEL org.apache.airflow.distro="debian" \
@@ -443,7 +443,7 @@ ENV BUILD_ID=${BUILD_ID}
 ARG COMMIT_SHA
 ENV COMMIT_SHA=${COMMIT_SHA}
 
-ARG AIRFLOW_IMAGE_REPOSITORY="https://github.com/apache/airflow"
+ARG AIRFLOW_IMAGE_REPOSITORY="https://github.com/ryanwclark/docker-airflow"
 ARG AIRFLOW_IMAGE_DATE_CREATED
 
 LABEL org.apache.airflow.distro="debian" \
