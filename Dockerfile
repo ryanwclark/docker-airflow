@@ -215,8 +215,8 @@ ENV AIRFLOW_INSTALL_VERSION=${AIRFLOW_INSTALL_VERSION}
 # We can seet this value to true in case we want to install .whl .tar.gz packages placed in the
 # docker-context-files folder. This can be done for both - additional packages you want to install
 # and for airflow as well (you have to set INSTALL_FROM_PYPI to false in this case)
-ARG INSTALL_FROM_DOCKER_CONTEXT_FILES=""
-ENV INSTALL_FROM_DOCKER_CONTEXT_FILES=${INSTALL_FROM_DOCKER_CONTEXT_FILES}
+# ARG INSTALL_FROM_DOCKER_CONTEXT_FILES=""
+# ENV INSTALL_FROM_DOCKER_CONTEXT_FILES=${INSTALL_FROM_DOCKER_CONTEXT_FILES}
 
 # By default we install latest airflow from PyPI. You can set it to false if you want to install
 # Airflow from the .whl or .tar.gz packages placed in `docker-context-files` folder.
@@ -264,7 +264,7 @@ ENV BUILD_ID=${BUILD_ID}
 ARG COMMIT_SHA
 ENV COMMIT_SHA=${COMMIT_SHA}
 
-ARG AIRFLOW_IMAGE_REPOSITORY="https://github.com/ryanwclark/docker-airflow"
+ARG AIRFLOW_IMAGE_REPOSITORY="https://github.com/apache/airflow"
 ARG AIRFLOW_IMAGE_DATE_CREATED
 
 LABEL org.apache.airflow.distro="debian" \
@@ -443,7 +443,7 @@ ENV BUILD_ID=${BUILD_ID}
 ARG COMMIT_SHA
 ENV COMMIT_SHA=${COMMIT_SHA}
 
-ARG AIRFLOW_IMAGE_REPOSITORY="https://github.com/ryanwclark/docker-airflow"
+ARG AIRFLOW_IMAGE_REPOSITORY="https://github.com/apache/airflow"
 ARG AIRFLOW_IMAGE_DATE_CREATED
 
 LABEL org.apache.airflow.distro="debian" \
