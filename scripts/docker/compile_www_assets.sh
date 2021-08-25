@@ -37,7 +37,8 @@ function compile_www_assets() {
     pushd ${www_dir} || exit 1
     yarn install --frozen-lockfile --no-cache --network-concurrency=1
     yarn run prod
-    find package.json yarn.lock static/css static/js -type f | sort | xargs md5sum > "${md5sum_file}"
+    # find package.json yarn.lock static/css static/js -type f | sort | xargs md5sum > "${md5sum_file}"
+    # could find yarn.lock
     rm -rf "${www_dir}/node_modules"
     rm -vf "${www_dir}"/{package.json,yarn.lock,.eslintignore,.eslintrc,.stylelintignore,.stylelintrc,compile_assets.sh,webpack.config.js}
     popd || exit 1

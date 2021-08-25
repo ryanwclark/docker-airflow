@@ -81,7 +81,7 @@ ARG ADDITIONAL_DEV_APT_DEPS=""
 ENV ADDITIONAL_DEV_APT_DEPS=${ADDITIONAL_DEV_APT_DEPS}
 
 ARG DEV_APT_COMMAND="\
-    curl --fail --location https://deb.nodesource.com/setup_10.x | bash - \
+    curl --fail --location https://deb.nodesource.com/setup_12.x | bash - \
     && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - > /dev/null \
     && echo 'deb https://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list"
 ENV DEV_APT_COMMAND=${DEV_APT_COMMAND}
@@ -235,7 +235,7 @@ ARG CONTINUE_ON_PIP_CHECK_FAILURE="false"
 
 # Copy all install scripts here
 COPY scripts/docker/install*.sh /scripts/docker/
-RUN cd scripts/docker && \
+RUN pwd \
     ls -la
 
 # hadolint ignore=SC2086, SC2010
@@ -253,9 +253,6 @@ RUN if [[ ${INSTALL_FROM_PYPI} == "true" ]]; then \
 
 # Copy compile_www_assets.sh install scripts here
 COPY scripts/docker/compile_www_assets.sh /scripts/docker/compile_www_assets.sh
-RUN cd scripts/docker && \
-    ls -la
-
 
 RUN bash /scripts/docker/compile_www_assets.sh
 
