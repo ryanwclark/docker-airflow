@@ -160,7 +160,7 @@ ARG INSTALL_PROVIDERS_FROM_SOURCES="false"
 ENV INSTALL_PROVIDERS_FROM_SOURCES=${INSTALL_PROVIDERS_FROM_SOURCES}
 
 # Only copy install_airflow_from_latest_master.sh to not invalidate cache on other script changes
-COPY scripts/docker/install_airflow_from_latest_master.sh /scripts/docker/install_airflow_from_latest_master.sh
+# COPY scripts/docker/install_airflow_from_latest_master.sh /scripts/docker/install_airflow_from_latest_master.sh
 
 # By default we do not upgrade to latest dependencies
 ARG UPGRADE_TO_NEWER_DEPENDENCIES="false"
@@ -172,24 +172,24 @@ ENV UPGRADE_TO_NEWER_DEPENDENCIES=${UPGRADE_TO_NEWER_DEPENDENCIES}
 # are uninstalled, only dependencies remain
 # the cache is only used when "upgrade to newer dependencies" is not set to automatically
 # account for removed dependencies (we do not install them in the first place)
-RUN if [[ ${AIRFLOW_PRE_CACHED_PIP_PACKAGES} == "true" && \
-          ${UPGRADE_TO_NEWER_DEPENDENCIES} == "false" ]]; then \
-        bash /scripts/docker/install_airflow_from_latest_master.sh; \
-    fi
+# RUN if [[ ${AIRFLOW_PRE_CACHED_PIP_PACKAGES} == "true" && \
+#           ${UPGRADE_TO_NEWER_DEPENDENCIES} == "false" ]]; then \
+#         bash /scripts/docker/install_airflow_from_latest_master.sh; \
+#     fi
 
 # By default we install latest airflow from PyPI so we do not need to copy sources of Airflow
 # but in case of breeze/CI builds we use latest sources and we override those
 # those SOURCES_FROM/TO with "." and "/opt/airflow" respectively
-ARG AIRFLOW_SOURCES_FROM="empty"
-ENV AIRFLOW_SOURCES_FROM=${AIRFLOW_SOURCES_FROM}
+# ARG AIRFLOW_SOURCES_FROM="empty"
+# ENV AIRFLOW_SOURCES_FROM=${AIRFLOW_SOURCES_FROM}
 
-ARG AIRFLOW_SOURCES_TO="/empty"
-ENV AIRFLOW_SOURCES_TO=${AIRFLOW_SOURCES_TO}
+# ARG AIRFLOW_SOURCES_TO="/empty"
+# ENV AIRFLOW_SOURCES_TO=${AIRFLOW_SOURCES_TO}
 
-COPY ${AIRFLOW_SOURCES_FROM} ${AIRFLOW_SOURCES_TO}
+# COPY ${AIRFLOW_SOURCES_FROM} ${AIRFLOW_SOURCES_TO}
 
-ARG CASS_DRIVER_BUILD_CONCURRENCY
-ENV CASS_DRIVER_BUILD_CONCURRENCY=${CASS_DRIVER_BUILD_CONCURRENCY}
+# ARG CASS_DRIVER_BUILD_CONCURRENCY
+# ENV CASS_DRIVER_BUILD_CONCURRENCY=${CASS_DRIVER_BUILD_CONCURRENCY}
 
 # This is airflow version that is put in the label of the image build
 ARG AIRFLOW_VERSION
