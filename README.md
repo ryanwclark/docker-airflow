@@ -11,7 +11,7 @@
 
 ## About
 
-Dockerfile to build an [airflow](https://airflow.apache.org/) linux container image.
+Dockerfile to build an [airflow](https://airflow.apache.org/) container image.
 
 * Currently tracking 2.1.0
 
@@ -57,8 +57,6 @@ The following image tags are available along with their tagged release based on 
 | airflow version | Tag     |
 | -------------- | ------- |
 | `main`         | `:main` |
-|
-
 
 
 ## Configuration
