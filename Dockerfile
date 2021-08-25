@@ -235,6 +235,8 @@ ARG CONTINUE_ON_PIP_CHECK_FAILURE="false"
 
 # Copy all install scripts here
 COPY scripts/docker/install*.sh /scripts/docker/
+RUN cd scripts/docker && \
+    ls -la
 
 # hadolint ignore=SC2086, SC2010
 RUN if [[ ${INSTALL_FROM_PYPI} == "true" ]]; then \
@@ -251,6 +253,9 @@ RUN if [[ ${INSTALL_FROM_PYPI} == "true" ]]; then \
 
 # Copy compile_www_assets.sh install scripts here
 COPY scripts/docker/compile_www_assets.sh /scripts/docker/compile_www_assets.sh
+RUN cd scripts/docker && \
+    ls -la
+
 
 RUN bash /scripts/docker/compile_www_assets.sh
 
