@@ -112,7 +112,7 @@ ENV INSTALL_MYSQL_CLIENT=${INSTALL_MYSQL_CLIENT}
 
 # Only copy install_mysql.sh to not invalidate cache on other script changes
 COPY scripts/docker/install_mysql.sh /scripts/docker/install_mysql.sh
-COPY docker-context-files /docker-context-files
+# COPY docker-context-files /docker-context-files
 # fix permission issue in Azure DevOps when running the script
 RUN bash ./scripts/docker/install_mysql.sh dev
 
@@ -133,9 +133,9 @@ ENV AIRFLOW_CONSTRAINTS_LOCATION=${AIRFLOW_CONSTRAINTS_LOCATION}
 ENV PATH=${PATH}:/root/.local/bin
 RUN mkdir -p /root/.local/bin
 
-RUN if [[ -f /docker-context-files/.pypirc ]]; then \
-        cp /docker-context-files/.pypirc /root/.pypirc; \
-    fi
+# RUN if [[ -f /docker-context-files/.pypirc ]]; then \
+#         cp /docker-context-files/.pypirc /root/.pypirc; \
+#     fi
 
 ARG AIRFLOW_PIP_VERSION
 ENV AIRFLOW_PIP_VERSION=${AIRFLOW_PIP_VERSION}
